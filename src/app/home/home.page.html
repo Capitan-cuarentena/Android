@@ -1,20 +1,99 @@
+
+<!--Header -->      
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+  <ion-toolbar class="custom-header">
+    <ion-title class="header-color">SkeletonAPP</ion-title>
   </ion-toolbar>
 </ion-header>
+<!--Footer -->      
+<ion-footer [translucent]="true">
+  <ion-toolbar class="custom-header">
+    <ion-title class="footer-color">App desarrollada por Franco</ion-title>
+  </ion-toolbar>
+</ion-footer>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="8" offset-md="2">
+        <form [formGroup]="loginForm">
+  <!--Dato del usuario registrado en login -->      
+<h1>Usuario: {{ data.usuario }}</h1>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+
+    <!--Nombre -->      
+            <ion-row>
+              <ion-col size="12" size-md="3" class="ion-text-end">
+                <h1 class="letra-item">Nombre</h1>
+              </ion-col>
+              <ion-col size="12" size-md="9">
+                <ion-item class="margen-item" lines="none">
+                  <ion-input formControlName="nombre" placeholder="Ingrese nombre"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+
+                
+  <!--Apellido -->
+  <ion-row>
+    <ion-col size="12" size-md="3" class="ion-text-end">
+      <h1 class="letra-item">Apellido</h1>
+    </ion-col>
+    <ion-col size="12" size-md="9">
+      <ion-item class="margen-item" lines="none">
+        <ion-input formControlName="apellido" placeholder="Ingrese apellido"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <!-- Nivel de educación -->
+  <ion-row>
+    <ion-col size="12" size-md="3" class="ion-text-end">
+      <h1 class="letra-item">Nivel de educación</h1>
+    </ion-col>
+    <ion-col size="12" size-md="9">
+      <ion-item class="margen-item" lines="none">
+        <ion-select formControlName="nivelEducacion" placeholder="Seleccione nivel">
+          <ion-select-option value="Educacion Basica">Educacion Basica</ion-select-option>
+          <ion-select-option value="Educación Media">Educación Media</ion-select-option>
+          <ion-select-option value="Educación Superior">Educación Superior</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <!-- Fecha de nacimiento -->
+  <ion-row>
+    <ion-col size="12" size-md="3" class="ion-text-end">
+      <h1 class="letra-item">Fecha de nacimiento</h1>
+    </ion-col>
+    <ion-col size="12" size-md="9">
+     
+        <mat-form-field>
+          <input formControlName="fechaNacimiento" matInput [matDatepicker]="picker" placeholder="MM/DD/YYYY">
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    
+    </ion-col>
+  </ion-row>
+      
+  
+       <!-- Boton de limpiar -->
+      <ion-button class="button-limpiar margen-item" (click)="limpiarFormulario(); applySlideEffect('nombre'); applySlideEffect('apellido')">
+          Limpiar
+      </ion-button>
+    
+  
+        <!-- Boton de mostrar datos -->         
+        <ion-button class="button-mostrar margen-item " (click)="mostrarDatos()">
+            Mostrar Datos
+        </ion-button>
+        
+
+        </form>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
